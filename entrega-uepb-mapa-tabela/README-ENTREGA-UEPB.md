@@ -2,7 +2,7 @@
 
 ## Conteudo desta pasta
 
-### Arquivos PRINCIPAIS para a TI (use estes, nao os arquivos originais)
+### Arquivos PRINCIPAIS para a TI (use estes)
 - `standalone-mapa.html`: pagina do mapa interativo, independente, pronta para integrar.
 - `standalone-tabela.html`: pagina da tabela navegavel, independente, pronta para integrar.
 - `standalone-video.html`: pagina do video institucional, independente, pronta para integrar.
@@ -38,7 +38,7 @@ Para inserir no portal da UEPB, basta copiar o arquivo MP4 para o servidor e ref
 ```
 
 ## Confirmacao importante
-Sim, existe tabela navegavel da colecao.
+existe tabela navegavel da colecao.
 Ela esta em `collection.html` e usa os elementos:
 - `#collection-search`
 - `#collection-table`
@@ -97,7 +97,7 @@ Antes de carregar `map.js`, adicionar:
 python scripts/build_collection.py
 ```
 
-3. Entregar para a TI apenas o novo arquivo `data/collection-data.js`.
+3. Entregar apenas o novo arquivo `data/collection-data.js`.
 
 ## Repositorio de Dados no Zenodo
 
@@ -110,7 +110,7 @@ Este repositorio publico no Zenodo contem dados e arquivos provenientes dos ulti
 - Arquivos suplementares dos artigos recentes do grupo de pesquisa.
 - Informacoes de acesso aberto para reproducibilidade cientifica.
 
-O repositorio pode ser citado e referenciado pela equipe de TI ao inserir as informaçẽos sobre publicações do instituto no portal institucional da UEPB, garantindo rastreabilidade da origem dos dados exibidos.
+O repositorio é para ser citado e referenciado ao inserir as informaçẽos sobre publicações do instituto no portal institucional da UEPB, garantindo rastreabilidade da origem dos dados exibidos.
 
 ## Teste local antes de enviar para o servidor da UEPB
 Na raiz desta pasta, rodar:
