@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Catalogo navegavel da colecao IBS-CRFS de fauna de solo">
+    <title>Catalogo da Colecao - IBS-CRFS</title>
+
+    <!-- Estilos do componente de tabela IBS-CRFS -->
+    <link rel="stylesheet" href="css/ibs-components.css" />
+</head>
+<body class="ibs-root">
+
+    <!-- ============================================================
+         BLOCO DA TABELA - copie este bloco para o portal da UEPB
+         ============================================================ -->
+    <div class="ibs-collection-section">
+
+        <div class="ibs-table-controls">
+            <label for="ibs-collection-search">Buscar:</label>
+            <input type="text"
+                   id="ibs-collection-search"
+                   placeholder="Filtre por ordem, familia, genero, localidade, data..."
+                   aria-label="Buscar na tabela da colecao">
+        </div>
+
+        <div class="ibs-table-meta" id="ibs-collection-meta">Carregando registros...</div>
+        <div class="ibs-table-status" id="ibs-collection-status" aria-live="polite"></div>
+
+        <div class="ibs-table-scroll">
+            <table class="ibs-data-table" id="ibs-collection-table">
+                <thead>
+                    <tr>
+                        <th>catalogNumber</th>
+                        <th>order</th>
+                        <th>family</th>
+                        <th>genus</th>
+                        <th>scientificName</th>
+                        <th>stateProvince</th>
+                        <th>municipality</th>
+                        <th>locality</th>
+                        <th>eventDate</th>
+                        <th>preparations</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <p class="ibs-table-meta">Exibindo ate 500 registros por filtro para manutencao do desempenho.</p>
+    </div>
+    <!-- ============================================================
+         FIM DO BLOCO DA TABELA
+         ============================================================ -->
+
+    <!-- Dados da colecao (gerado localmente, sem expor o CSV) -->
+    <script src="data/collection-data.js"></script>
+
+    <!-- Logica da tabela navegavel -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var searchInput = document.getElementById('ibs-collection-search');
+        var table = document.getElementById('ibs-collection-table');
+        var statusEl = document.getElementById('ibs-collection-status');
+        var metaEl = document.getElementById('ibs-collection-meta');
+        var MAX_ROWS = 500;
+
+        if (!searchInput || !table || !statusEl || !metaEl) return;
+
+        var tbody = table.querySelector('tbody');
+        var source = Array.isArray(window.COLLECTION_DATA) ? window.COLLECTION_DATA : [];
+        var records = source.map(function (row) {
+            return {
+                catalogNumber: row.catalogNumber || '',
+                order: row.order || '',
+                family: row.family || '',
+                genus: row.genus || '',
+                scientificName: row.scientificName || row.specificEpithet || '',
+                stateProvince: row.stateProvince || '',
+                municipality: row.municipality || '',
+                locality: row.locality || '',
+                eventDate: row.eventDate || '',
+                preparations: row.preparations || ''
+            };
+        });
+
+        if (!records.length) {
+            statusEl.textContent = 'Nenhum dado carregado. Verifique se collection-data.js esta acessivel.';
+        }
+
+        function render(term) {
+            var needle = (term || '').trim().toLowerCase();
+            var filtered = needle
+                ? records.filter(function (r) {
+                    return (r.catalogNumber + ' ' + r.order + ' ' + r.family + ' ' + r.genus + ' ' +
+                            r.scientificName + ' ' + r.stateProvince + ' ' + r.municipality + ' ' +
+                            r.locality + ' ' + r.eventDate + ' ' + r.preparations).toLowerCase().indexOf(needle) !== -1;
+                  })
+                : records;
+            var slice = filtered.slice(0, MAX_ROWS);
+            metaEl.textContent = 'Exibindo ' + slice.length + ' de ' + filtered.length +
+                                 ' registros (limite ' + MAX_ROWS + '). Total: ' + records.length + '.';
+            tbody.innerHTML = slice.map(function (r) {
+                return '<tr>' +
+                    '<td>' + (r.catalogNumber || '-') + '</td>' +
+                    '<td>' + (r.order || '-') + '</td>' +
+                    '<td>' + (r.family || '-') + '</td>' +
+                    '<td>' + (r.genus || '-') + '</td>' +
+                    '<td>' + (r.scientificName || '-') + '</td>' +
+                    '<td>' + (r.stateProvince || '-') + '</td>' +
+                    '<td>' + (r.municipality || '-') + '</td>' +
+                    '<td>' + (r.locality || '-') + '</td>' +
+                    '<td>' + (r.eventDate || '-') + '</td>' +
+                    '<td>' + (r.preparations || '-') + '</td>' +
+                    '</tr>';
+            }).join('');
+        }
+
+        searchInput.addEventListener('input', function () { render(searchInput.value); });
+        render('');
+    });
+    </script>
+</body>
+</html>

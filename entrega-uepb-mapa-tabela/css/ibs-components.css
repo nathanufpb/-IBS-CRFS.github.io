@@ -1,0 +1,199 @@
+/* IBS-CRFS Components - Standalone CSS
+   Use este arquivo ao integrar o mapa, a tabela ou o video no portal da UEPB.
+   Inclui apenas os estilos necessarios para esses tres componentes,
+   sem conflitar com o tema do portal.
+*/
+
+/* Variaveis de cor - ajuste conforme a identidade visual da UEPB se necessario */
+.ibs-root {
+    --ibs-green: #2c5f2d;
+    --ibs-green2: #4a7c59;
+    --ibs-green3: #7fa650;
+    --ibs-text: #333;
+    --ibs-muted: #666;
+    --ibs-bg: #f5f5f5;
+    --ibs-white: #ffffff;
+    --ibs-border: #ddd;
+    --ibs-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* =====================
+   MAPA INTERATIVO
+   ===================== */
+.ibs-map-section {
+    padding: 2rem 0;
+}
+
+.ibs-map-info {
+    background-color: var(--ibs-bg, #f5f5f5);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    color: var(--ibs-muted, #666);
+}
+
+#ibs-map,
+#map {
+    height: 500px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: var(--ibs-shadow, 0 2px 8px rgba(0,0,0,0.1));
+    margin-bottom: 2rem;
+}
+
+.ibs-map-status {
+    margin: 0.5rem 0 1rem 0;
+    color: var(--ibs-muted, #666);
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    #ibs-map,
+    #map {
+        height: 400px;
+    }
+}
+
+/* =====================
+   TABELA DA COLECAO
+   ===================== */
+.ibs-table-controls {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.ibs-table-controls label {
+    font-weight: 600;
+    color: var(--ibs-green, #2c5f2d);
+}
+
+.ibs-table-controls input {
+    flex: 1 1 260px;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--ibs-border, #ddd);
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.ibs-table-controls input:focus {
+    outline: 2px solid var(--ibs-green3, #7fa650);
+    border-color: var(--ibs-green3, #7fa650);
+}
+
+.ibs-table-scroll {
+    width: 100%;
+    overflow: auto;
+    box-shadow: var(--ibs-shadow, 0 2px 8px rgba(0,0,0,0.1));
+    border-radius: 8px;
+    background: var(--ibs-white, #fff);
+    margin-bottom: 2rem;
+    max-height: 420px;
+}
+
+.ibs-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px;
+    font-size: 0.93rem;
+}
+
+.ibs-data-table thead {
+    background: var(--ibs-green, #2c5f2d);
+    color: var(--ibs-white, #fff);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+}
+
+.ibs-data-table th,
+.ibs-data-table td {
+    padding: 0.7rem 0.9rem;
+    text-align: left;
+    border-bottom: 1px solid var(--ibs-border, #ddd);
+}
+
+.ibs-data-table th {
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.ibs-data-table td:nth-child(1) {
+    font-weight: 700;
+    color: var(--ibs-green, #2c5f2d);
+}
+
+.ibs-data-table td:nth-child(9) {
+    white-space: nowrap;
+}
+
+.ibs-data-table tbody tr:nth-child(even) {
+    background: var(--ibs-bg, #f5f5f5);
+}
+
+.ibs-data-table tbody tr:hover {
+    background: rgba(74, 124, 89, 0.08);
+}
+
+.ibs-table-meta {
+    margin: 0.5rem 0 1rem 0;
+    color: var(--ibs-muted, #666);
+    font-size: 0.95rem;
+}
+
+.ibs-table-status {
+    margin: 0.2rem 0 1rem 0;
+    color: #b33;
+    font-weight: 600;
+}
+
+/* =====================
+   VIDEO INSTITUCIONAL
+   ===================== */
+.ibs-video-section {
+    padding: 3rem 0;
+    background: var(--ibs-bg, #f5f5f5);
+}
+
+.ibs-video-title {
+    text-align: center;
+    color: var(--ibs-green, #2c5f2d);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.ibs-video-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    box-shadow: var(--ibs-shadow, 0 2px 8px rgba(0,0,0,0.1));
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+}
+
+.ibs-video-wrapper video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    object-fit: cover;
+}
+
+.ibs-video-meta {
+    max-width: 900px;
+    margin: 1rem auto 0 auto;
+    color: var(--ibs-muted, #666);
+    text-align: center;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive Map - IBS-CRFS Sampling Locations">
+    <title>IBS-CRFS - Interactive Map</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>IBS-CRFS</h1>
+                <p class="subtitle">Instituto de Biologia de Solos</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="collection.html">Collection</a></li>
+                    <li><a href="map.html" class="active">Interactive Map</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="publications.html">Publications</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h2>Interactive Map</h2>
+                <p class="lead">Explore our sampling locations across different regions</p>
+            </div>
+        </section>
+
+        <section class="map-section">
+            <div class="container">
+                <div class="map-info">
+                    <p>This map shows the locations where soil fauna samples have been collected. Click on markers to view detailed information about each sampling site.</p>
+                    <p id="map-status" class="table-meta" aria-live="polite"></p>
+                </div>
+                <div id="map"></div>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container">
+                <div class="content-text">
+                    <h3>About Our Sampling Sites</h3>
+                    <p>Our collection sites represent diverse ecosystems across different regions. Each location provides valuable insights into the distribution and diversity of soil fauna in various environmental conditions.</p>
+                    
+                    <h3>Site Information</h3>
+                    <p>For each sampling site, we record:</p>
+                    <ul>
+                        <li>Geographic coordinates (latitude and longitude)</li>
+                        <li>Ecosystem type (forest, grassland, agricultural, etc.)</li>
+                        <li>Sampling date and methodology</li>
+                        <li>List of species collected</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 IBS-CRFS - Instituto de Biologia de Solo. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="data/collection-data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/map.js"></script>
+</body>
+</html>

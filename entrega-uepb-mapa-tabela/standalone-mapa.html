@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mapa interativo da colecao IBS-CRFS - pontos de coleta de fauna de solo">
+    <title>Mapa Interativo - IBS-CRFS</title>
+
+    <!-- Leaflet CSS (local, sem CDN) -->
+    <link rel="stylesheet" href="leaflet/leaflet.css" />
+
+    <!-- Estilos do componente de mapa IBS-CRFS -->
+    <link rel="stylesheet" href="css/ibs-components.css" />
+</head>
+<body class="ibs-root">
+
+    <!-- ============================================================
+         BLOCO DO MAPA - copie este bloco para o portal da UEPB
+         ============================================================ -->
+    <div class="ibs-map-section">
+        <div class="ibs-map-info">
+            <p>Este mapa mostra os pontos de coleta da Colecao de Referencia de Fauna do Solo (IBS-CRFS). Clique nos marcadores para visualizar informacoes de cada exemplar.</p>
+            <p id="map-status" class="ibs-map-status" aria-live="polite"></p>
+        </div>
+        <div id="map" style="height:500px; width:100%;"></div>
+    </div>
+    <!-- ============================================================
+         FIM DO BLOCO DO MAPA
+         ============================================================ -->
+
+    <!-- Leaflet JS (local, sem CDN) -->
+    <script src="leaflet/leaflet.js"></script>
+
+    <!-- Dados da colecao (gerado localmente, sem expor o CSV) -->
+    <script src="data/collection-data.js"></script>
+
+    <!-- Caminho personalizado dos dados: ajuste se necessario no portal da UEPB -->
+    <!-- <script>window.IBS_MAP_DATA_URL = "/assets/ibs/data/collection-data.js";</script> -->
+
+    <!-- Logica do mapa -->
+    <script src="js/map.js"></script>
+</body>
+</html>
